@@ -1,0 +1,48 @@
+{
+  "name": "riot-sample",
+  "version": "1.0.0",
+  "description": "riot.js sample project",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "prestart": "npm run build",
+    "start": "npm-run-all -p watch server",
+    "build": "npm-run-all clean build:riot build:browserify",
+    "build:riot": "riot -m src/tags src/tags/index.js",
+    "build:browserify": "browserify src/index.js > dist/bundle.js --debug",
+    "server": "browser-sync start --server --files \"*.html\" \"dist/*\"",
+    "watch": "chokidar \"src/**/*\" -i \"src/tags/index.js\" -c \"npm run build\""
+  },
+  "keywords": [
+    "riot",
+    "babel",
+    "browserify",
+    "sample"
+  ],
+  "author": "kazunori.kimura.js@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-es2016": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.8",
+    "browserify": "^14.1.0",
+    "chokidar-cli": "^1.2.0",
+    "npm-run-all": "^4.0.2",
+    "rimraf": "^2.6.1",
+    "riot": "^3.3.2"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015",
+            "es2016"
+          ]
+        }
+      ]
+    ]
+  }
+}
