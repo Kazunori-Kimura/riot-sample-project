@@ -4,7 +4,7 @@
   "description": "riot.js sample project",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf dist/*",
+    "clean": "rimraf dist/bundle.js",
     "prestart": "npm run build",
     "start": "npm-run-all -p watch server",
     "build": "npm-run-all clean build:riot build:browserify",
