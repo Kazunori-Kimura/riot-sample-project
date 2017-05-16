@@ -1,6 +1,9 @@
 // index.js
 const riot = require("riot");
-require("./tags");
+require("./tags/hello");
+require("./tags/hoge");
 
-// helloタグをマウント
-riot.mount("hello");
+const observer = riot.observable();
+
+// hello, hogeタグをマウント
+riot.mount("*", { observer });
